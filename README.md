@@ -1,6 +1,6 @@
 # Clash Royale - Match Prediction
 
-![Clash Royale Match Prediction](./images/clash_royale_match_prediction.jpg)
+![Clash Royale Match Prediction](./images/clash-royale-match-prediction.jpg)
 
 This project demonstrates how to:
 1. **Fetch battle data** from the Clash Royale API.
