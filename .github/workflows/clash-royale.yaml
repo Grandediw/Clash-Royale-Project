@@ -37,6 +37,22 @@ jobs:
           cd notebooks
           jupyter nbconvert --to notebook --execute 2_clash_royale_feature_pipeline.ipynb
           jupyter nbconvert --to notebook --execute 4_clash_royale_batch_inference_copy.ipynb
+      
+      - name: Convert Notebooks
+        run: |
+          mkdir -p output
+          jupyter-nbconvert --to html notebooks/*.ipynb --output-dir=output
+
+      - name: Replace README with Results (Optional)
+        run: |
+          echo "Converted results from notebooks." > output/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: output
+          
 
       - name: github pages publish
         uses: stefanzweifel/git-auto-commit-action@v5
