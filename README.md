@@ -149,7 +149,7 @@ The predictive system successfully estimates match outcomes for Clash Royale usi
 
 ## Try the Interface
 Test the interactive Clash Royale prediction system directly on Hugging Face Spaces:  
-[**Try the Interface Here!**](https://huggingface.co/spaces/Grandediw/Clash_Royale_Prediction)
+[**Try the Interface Here!**](https://huggingface.co/spaces/jacopoda/CR)
 
 ---
 
