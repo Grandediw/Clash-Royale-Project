@@ -40,6 +40,12 @@ jobs:
           jupyter nbconvert --to notebook --execute 2_clash_royale_feature_pipeline.ipynb
           jupyter nbconvert --to notebook --execute 4_clash_royale_batch_inference_copy.ipynb
 
+      - name: Convert Notebook to HTML (Dashboard)
+        run: |
+          mkdir -p output
+          jupyter-nbconvert --to html notebooks/4_clash_royale_batch_inference_copy.ipynb --output-dir=output
+          mv output/4_clash_royale_batch_inference_copy.html output/dashboard.html
+
       - name: Convert README.md to index.html
         run: |
           python -c "
