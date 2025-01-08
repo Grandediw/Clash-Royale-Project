@@ -60,6 +60,10 @@ jobs:
               f.write('</body></html>')
           EOF
 
+      - name: Move Files to Root Directory
+        run: |
+          mv output/* .
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
