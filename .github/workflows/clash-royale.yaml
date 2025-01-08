@@ -2,6 +2,7 @@ name: clash-royale-daily
 
 on:
   workflow_dispatch:
+    # Uncomment to schedule
     #schedule:
     #- cron: '11 6 * * *'
 
@@ -14,22 +15,23 @@ jobs:
       contents: write
 
     steps:
-      - name: checkout repo content
+      - name: Checkout Repository Content
         uses: actions/checkout@v4
 
-      - name: setup python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
           cache: 'pip'
-      - name: install python packages
+
+      - name: Install Python Packages
         run: |
           cd notebooks
           python -m pip install --upgrade pip
           pip install jupyter nbconvert
           pip install -r requirements.txt
 
-      - name: execute python workflows from bash script
+      - name: Execute Python Workflows
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
           API_TOKEN: ${{ secrets.CLASH_ROYALE_API_KEY }}
@@ -37,23 +39,30 @@ jobs:
           cd notebooks
           jupyter nbconvert --to notebook --execute 2_clash_royale_feature_pipeline.ipynb
           jupyter nbconvert --to notebook --execute 4_clash_royale_batch_inference_copy.ipynb
-      
-      - name: Convert Notebooks
+
+      - name: Convert Notebook to HTML (Dashboard)
         run: |
           mkdir -p output
           jupyter-nbconvert --to html notebooks/4_clash_royale_batch_inference_copy.ipynb --output-dir=output
+          mv output/4_clash_royale_batch_inference_copy.html output/dashboard.html
 
-      - name: Rename the Desired File to index.html
-        run: |
-          mv output/4_clash_royale_batch_inference_copy.html output/index.html
+      #- name: Convert README.md to index.html
+      #  run: |
+      #    python <<EOF
+      #    import markdown
+      #    with open('README.md', 'r') as f:
+      #      text = f.read()
+      #    html = markdown.markdown(text)
+      #    with open('output/index.html', 'w') as f:
+      #        f.write('<html><body>')
+      #        f.write(html)
+      #        f.write('<hr><a href="dashboard.html">Go to Dashboard</a>')
+      #        f.write('</body></html>')
+      #    EOF
 
-      - name: Move index.html to Root
+      - name: Move Files to Root Directory
         run: |
-          mv output/index.html ./  # Move index.html to the root directory
-
-      - name: Replace README with Results (Optional)
-        run: |
-          echo "Converted results from notebooks." > output/index.html
+          mv output/* .
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -61,23 +70,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: output
 
-
-      - name: github pages publish
+      - name: GitHub Pages Publish
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Clash Royale Dashboard published"
           commit_options: '--no-verify --signoff'
-
-          #file_pattern: 'docs/air-quality/assets/img/* docs/_includes/*'
-
           repository: .
-
           status_options: '--untracked-files=no'
-
           skip_dirty_check: true
-
           skip_fetch: true
-
           skip_checkout: true
-
           push_options: '--force'
