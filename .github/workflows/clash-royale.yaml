@@ -43,6 +43,10 @@ jobs:
           mkdir -p output
           jupyter-nbconvert --to html notebooks/4_clash_royale_batch_inference_copy.ipynb --output-dir=output
 
+      - name: Rename the Desired File to index.html
+        run: |
+          mv output/4_clash_royale_batch_inference_copy.html output/index.html
+
       - name: Move index.html to Root
         run: |
           mv output/index.html ./  # Move index.html to the root directory
