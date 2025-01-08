@@ -1,4 +1,4 @@
-name: clash-royale-daily
+name: clash-royale--update-model-weekly
 
 on:
   workflow_dispatch:
