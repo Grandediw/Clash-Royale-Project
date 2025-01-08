@@ -1,142 +1,151 @@
-# **Clash Royale - Match Prediction**
+# **Clash Royale Machine Learning Project**
 
 ![Clash Royale Match Prediction](./images/Clash-royale-match-prediction.jpg)
 
 Welcome to the **Clash Royale Match Prediction** project! This repository provides tools to fetch, clean, and analyze battle data from the Clash Royale API, with the option to develop predictive models for match outcomes. It's a perfect starting point for Clash Royale enthusiasts looking to delve into data science or machine learning.
 
----
-
-## **Try Our Interface**
-
-You can test our Clash Royale Match Prediction interface on Hugging Face Spaces:  
-[**Try the Interface Here!**](https://huggingface.co/spaces/Grandediw/Clash_Royale_Prediction)
-
----
-
-## **Key Features**
-
-1. **Fetch Battle Data**  
-   Seamlessly retrieve battle and player data using the Clash Royale API.
-
-2. **Data Cleaning and Preprocessing**  
-   Process JSON-formatted data (e.g., cards, opponents, and match outcomes) into clean, tabular formats for analysis.
-
-3. **Data Analysis and Visualization**  
-   Explore match trends, player performance, and more with tools like pandas and matplotlib.
-
-4. **Predictive Modeling (Optional)**  
-   Build machine learning models to predict match outcomes or analyze player strategies.
+## Table of Contents
+1. [Introduction](#introduction)  
+2. [Methods](#methods)  
+   - [Historical Dataset](#historical-dataset)  
+   - [API](#api)  
+3. [Data Representation and Preprocessing](#data-representation-and-preprocessing)  
+   - [Deck Representation](#deck-representation-using-one-hot-encoding)  
+   - [Outcome Encoding](#outcome-encoding-and-dataframe-creation)  
+   - [Data Preprocessing](#data-preprocessing)  
+4. [Modeling and Evaluation](#modeling-and-evaluation)  
+   - [Models Tested](#models-tested)  
+   - [Performance Metrics](#performance-metrics)  
+5. [Conclusion](#conclusion)  
+6. [Discussion](#discussion)  
+7. [How to Run the Code](#how-to-run-the-code)  
+8. [Try the Interface](#try-the-interface)
 
 ---
 
-## **Table of Contents**
+## Introduction
+This project aims to create a predictive system for **Clash Royale**, a strategy-based card game with 181 unique cards. Players build eight-card decks, and the synergy, counter-abilities, and balance of the deck significantly impact match outcomes.
 
-1. [Project Structure](#project-structure)  
-2. [Requirements](#requirements)  
-3. [Setup](#setup)  
-4. [Running the Scripts](#running-the-scripts)  
-5. [Usage and Overview](#usage-and-overview)  
-6. [Future Enhancements](#future-enhancements)  
-7. [License](#license)  
+The system predicts the probability of winning based on two opponents' decks using historical match data and machine learning models. It provides insights into how card combinations influence match results.
 
 ---
 
-## **Project Structure**
+## Methods
 
-Here’s an overview of the repository structure:
+### Historical Dataset
+The dataset consists of **2.5 million matches** sourced from Hugging Face. It includes:
+- **Deck Composition**: The cards in each player's eight-card deck.
+- **Match Outcome**: Indicates the winner.
 
-```
-Clash-Royale-Project/
-│
-├── data/                # Raw and processed data files
-├── notebooks/           # Jupyter notebooks for exploration and analysis
-├── scripts/             # Python scripts for data fetching and processing
-├── models/              # Saved machine learning models (optional)
-├── images/              # Project-related images and graphics
-├── README.md            # Project documentation
-```
+Each card was mapped to a unique identifier for encoding purposes, and key features were extracted for modeling.
 
----
+### API
+The project also integrates the **Clash Royale API** to fetch real-time player match data. For each player tag, the API provides:
+- Deck composition
+- Match outcomes for the last 30 matches
 
-## **Requirements**
-
-To run the project, ensure you have the following:
-
-- Python 3.10
-- Required Python packages (see `requirements.txt`)
-- Access to the Clash Royale API (API key required)
+This combination of historical and real-time data ensures accurate and relevant predictions.
 
 ---
 
-## **Setup**
+## Data Representation and Preprocessing
 
-1. Clone the repository:
+### Deck Representation Using One-Hot Encoding
+Each of the 181 cards is represented as a binary vector. A deck is encoded as a single vector of 181 elements, where positions corresponding to the deck's cards are set to `1`, and others are set to `0`. This approach avoids biases and maintains interpretability.
+
+### Outcome Encoding and Dataframe Creation
+Match outcomes were encoded as:
+- `1` for Player 1 wins
+- `0` for Player 2 wins
+
+The dataset was structured into a dataframe where each row corresponds to a match with:
+- Encoded Player 1 deck
+- Encoded Player 2 deck
+- Match outcome
+
+### Data Preprocessing
+Key preprocessing steps included:
+1. Mapping each card to its one-hot encoded vector.
+2. Structuring the dataset such that each row represents a match.
+3. Randomizing player positions to prevent biases.
+
+---
+
+## Modeling and Evaluation
+
+### Models Tested
+1. **Neural Network (TensorFlow)**  
+   - Input Layer: 128 neurons with ReLU activation  
+   - Hidden Layer: 64 neurons with ReLU activation  
+   - Output Layer: 1 neuron with tanh activation  
+
+   Trained using Adam optimizer and Mean Squared Error (MSE) loss over 20 epochs.
+
+2. **XGBoost Classifier**  
+   - Gradient boosting algorithm configured for classification tasks.  
+   - Evaluated using the log-loss metric.  
+
+### Performance Metrics
+Models were evaluated based on:
+- **Accuracy**: Correctly predicted outcomes.
+- **Precision and Recall**: Ability to identify wins and losses.
+- **Validation Loss**: Monitors overfitting during training.
+
+---
+
+## Conclusion
+
+### Model Performance
+- **XGBoost** achieved an accuracy of **84.3%** and a macro F1-score of **83%**, outperforming the neural network.
+- The neural network achieved only **56.62% accuracy**, highlighting challenges in capturing the complexity of card interactions.
+
+### Why XGBoost Was Chosen
+1. **Higher Accuracy**  
+2. **Efficiency**: Faster training and tuning.  
+3. **Robustness**: Better handling of high-dimensional data.
+
+---
+
+## Discussion
+The predictive system successfully estimates match outcomes for Clash Royale using a combination of historical and real-time data.
+
+### Limitations
+1. Dependence on API availability for live data.  
+2. Reduced accuracy for unconventional decks.  
+
+### Future Improvements
+1. Explore deep learning techniques like attention mechanisms for better card interaction modeling.  
+2. Enhance predictions for unconventional deck strategies.
+
+---
+
+## How to Run the Code
+1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/Clash-Royale-Project.git
-   cd Clash-Royale-Project
+   git clone https://github.com/your-username/clash-royale-predictor.git
+   cd clash-royale-predictor
    ```
 
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv env
-   source env/bin/activate  # On Windows: env\Scripts\activate
-   ```
-
-3. Install the required dependencies:
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Set up your Clash Royale API key:
-   - Obtain an API key from the official [Clash Royale API website](https://developer.clashroyale.com/).
-   - Add the API key to an environment file (`.env`) in the following format:
-     ```
-     CLASH_ROYALE_API_KEY=your_api_key_here
-     ```
+3. Deploy the system using the provided code.
+
+4. Access the system via the provided URL to input player tags or decks and view predictions.
 
 ---
 
-## **Running the Scripts**
-
-### 1. Fetching Data
-Run the script to fetch battle data:
-```bash
-python scripts/fetch_data.py
-```
-
-### 2. Cleaning and Processing Data
-Clean and preprocess the fetched JSON data into a tabular format:
-```bash
-python scripts/process_data.py
-```
-
-### 3. Building Predictive Models (Optional)
-Train machine learning models for match prediction:
-```bash
-python scripts/train_model.py
-```
+## Try the Interface
+Test the interactive Clash Royale prediction system directly on Hugging Face Spaces:  
+[**Try the Interface Here!**](https://huggingface.co/spaces/Grandediw/Clash_Royale_Prediction)
 
 ---
 
-## **Usage and Overview**
-
-1. **Exploratory Analysis**  
-   Use the Jupyter notebooks in the `notebooks/` directory to explore the data, visualize player performance, and analyze match outcomes.
-
-2. **Prediction Models**  
-   - Experiment with different machine learning algorithms (e.g., Random Forest, XGBoost) to predict match outcomes.
-   - Evaluate models with metrics like accuracy, precision, and recall.
-
-3. **Customize for Advanced Analytics**  
-   Extend the project to analyze trends, player strategies, or build real-time dashboards for game insights.
-
----
-
-## **Future Enhancements**
-
-- **Model Deployment:** Deploy predictive models as a web application or API for real-time match predictions.
-- **Data Visualization:** Add more visualizations to highlight key insights from the data.
-- **Additional Features:** Analyze card effectiveness, player deck compositions, and opponent strategies.
+## References
+1. [Clash Royale Dataset on Kaggle](https://www.kaggle.com/datasets/s1m0n38/clash-royale-games)  
+2. [Clash Royale API Documentation](https://developer.clashroyale.com/#/)
 
 ---
 
