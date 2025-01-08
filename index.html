@@ -1,1 +1,124 @@
-Converted results from notebooks.
+<html><body><h1><strong>Clash Royale - Match Prediction</strong></h1>
+<p><img alt="Clash Royale Match Prediction" src="./images/Clash-royale-match-prediction.jpg" /></p>
+<p>Welcome to the <strong>Clash Royale Match Prediction</strong> project! This repository provides tools to fetch, clean, and analyze battle data from the Clash Royale API, with the option to develop predictive models for match outcomes. It's a perfect starting point for Clash Royale enthusiasts looking to delve into data science or machine learning.</p>
+<hr />
+<h2><strong>Key Features</strong></h2>
+<ol>
+<li>
+<p><strong>Fetch Battle Data</strong><br />
+   Seamlessly retrieve battle and player data using the Clash Royale API.</p>
+</li>
+<li>
+<p><strong>Data Cleaning and Preprocessing</strong><br />
+   Process JSON-formatted data (e.g., cards, opponents, and match outcomes) into clean, tabular formats for analysis.</p>
+</li>
+<li>
+<p><strong>Data Analysis and Visualization</strong><br />
+   Explore match trends, player performance, and more with tools like pandas and matplotlib.</p>
+</li>
+<li>
+<p><strong>Predictive Modeling (Optional)</strong><br />
+   Build machine learning models to predict match outcomes or analyze player strategies.</p>
+</li>
+</ol>
+<hr />
+<h2><strong>Table of Contents</strong></h2>
+<ol>
+<li><a href="#project-structure">Project Structure</a>  </li>
+<li><a href="#requirements">Requirements</a>  </li>
+<li><a href="#setup">Setup</a>  </li>
+<li><a href="#running-the-scripts">Running the Scripts</a>  </li>
+<li><a href="#usage-and-overview">Usage and Overview</a>  </li>
+<li><a href="#future-enhancements">Future Enhancements</a>  </li>
+<li><a href="#license">License</a>  </li>
+</ol>
+<hr />
+<h2><strong>Project Structure</strong></h2>
+<p>Here’s an overview of the repository structure:</p>
+<p><code>Clash-Royale-Project/
+│
+├── data/                # Raw and processed data files
+├── notebooks/           # Jupyter notebooks for exploration and analysis
+├── scripts/             # Python scripts for data fetching and processing
+├── models/              # Saved machine learning models (optional)
+├── images/              # Project-related images and graphics
+├── README.md            # Project documentation</code></p>
+<hr />
+<h2><strong>Requirements</strong></h2>
+<p>To run the project, ensure you have the following:</p>
+<ul>
+<li>Python 3.10</li>
+<li>Required Python packages (see <code>requirements.txt</code>)</li>
+<li>Access to the Clash Royale API (API key required)</li>
+</ul>
+<hr />
+<h2><strong>Setup</strong></h2>
+<ol>
+<li>
+<p>Clone the repository:
+   <code>bash
+   git clone https://github.com/your-username/Clash-Royale-Project.git
+   cd Clash-Royale-Project</code></p>
+</li>
+<li>
+<p>Create and activate a virtual environment:
+   <code>bash
+   python -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate</code></p>
+</li>
+<li>
+<p>Install the required dependencies:
+   <code>bash
+   pip install -r requirements.txt</code></p>
+</li>
+<li>
+<p>Set up your Clash Royale API key:</p>
+</li>
+<li>Obtain an API key from the official <a href="https://developer.clashroyale.com/">Clash Royale API website</a>.</li>
+<li>Add the API key to an environment file (<code>.env</code>) in the following format:
+     <code>CLASH_ROYALE_API_KEY=your_api_key_here</code></li>
+</ol>
+<hr />
+<h2><strong>Running the Scripts</strong></h2>
+<h3>1. Fetching Data</h3>
+<p>Run the script to fetch battle data:
+<code>bash
+python scripts/fetch_data.py</code></p>
+<h3>2. Cleaning and Processing Data</h3>
+<p>Clean and preprocess the fetched JSON data into a tabular format:
+<code>bash
+python scripts/process_data.py</code></p>
+<h3>3. Building Predictive Models (Optional)</h3>
+<p>Train machine learning models for match prediction:
+<code>bash
+python scripts/train_model.py</code></p>
+<hr />
+<h2><strong>Usage and Overview</strong></h2>
+<ol>
+<li>
+<p><strong>Exploratory Analysis</strong><br />
+   Use the Jupyter notebooks in the <code>notebooks/</code> directory to explore the data, visualize player performance, and analyze match outcomes.</p>
+</li>
+<li>
+<p><strong>Prediction Models</strong>  </p>
+</li>
+<li>Experiment with different machine learning algorithms (e.g., Random Forest, XGBoost) to predict match outcomes.</li>
+<li>
+<p>Evaluate models with metrics like accuracy, precision, and recall.</p>
+</li>
+<li>
+<p><strong>Customize for Advanced Analytics</strong><br />
+   Extend the project to analyze trends, player strategies, or build real-time dashboards for game insights.</p>
+</li>
+</ol>
+<hr />
+<h2><strong>Future Enhancements</strong></h2>
+<ul>
+<li><strong>Model Deployment:</strong> Deploy predictive models as a web application or API for real-time match predictions.</li>
+<li><strong>Data Visualization:</strong> Add more visualizations to highlight key insights from the data.</li>
+<li><strong>Additional Features:</strong> Analyze card effectiveness, player deck compositions, and opponent strategies.</li>
+</ul>
+<hr />
+<h2><strong>License</strong></h2>
+<p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
+<hr /><hr><a href="dashboard.html">Go to Dashboard</a></body></html>
