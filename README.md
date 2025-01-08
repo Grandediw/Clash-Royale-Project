@@ -36,7 +36,7 @@ The system predicts the probability of winning based on two opponents' decks usi
 ---
 
 ## Architecture
-![ML_architecture](./images/images/BPMN 2.0 Example.png)
+![ML_architecture](./images/BPMN 2.0 Example.png)
 
 ---
 
