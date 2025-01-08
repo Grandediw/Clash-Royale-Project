@@ -40,25 +40,22 @@ jobs:
           jupyter nbconvert --to notebook --execute 2_clash_royale_feature_pipeline.ipynb
           jupyter nbconvert --to notebook --execute 4_clash_royale_batch_inference_copy.ipynb
 
-      - name: Convert Notebook to HTML (Dashboard)
+      - name: Create Custom HTML Dashboard
         run: |
           mkdir -p output
-          jupyter-nbconvert --to html notebooks/4_clash_royale_batch_inference_copy.ipynb --output-dir=output
-          mv output/4_clash_royale_batch_inference_copy.html output/dashboard.html
-
-      #- name: Convert README.md to index.html
-      #  run: |
-      #    python <<EOF
-      #    import markdown
-      #    with open('README.md', 'r') as f:
-      #      text = f.read()
-      #    html = markdown.markdown(text)
-      #    with open('output/index.html', 'w') as f:
-      #        f.write('<html><body>')
-      #        f.write(html)
-      #        f.write('<hr><a href="dashboard.html">Go to Dashboard</a>')
-      #        f.write('</body></html>')
-      #    EOF
+          echo '<!DOCTYPE html>' > output/dashboard.html
+          echo '<html lang="en">' >> output/dashboard.html
+          echo '<head>' >> output/dashboard.html
+          echo '<meta charset="UTF-8">' >> output/dashboard.html
+          echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> output/dashboard.html
+          echo '<title>Clash Royale Dashboard</title>' >> output/dashboard.html
+          echo '</head>' >> output/dashboard.html
+          echo '<body style="text-align: center; font-family: Arial, sans-serif; background-color: #f8f9fa; color: #333;">' >> output/dashboard.html
+          echo '<h1>Clash Royale Predictions</h1>' >> output/dashboard.html
+          echo '<p>Daily updated predictions for Clash Royale matches:</p>' >> output/dashboard.html
+          echo '<img src="https://github.com/Grandediw/Clash-Royale-Project/raw/main/data/clash_royale_updated_predictions.png" alt="Clash Royale Predictions" style="max-width: 90%; height: auto; border: 1px solid #ddd; border-radius: 8px; padding: 10px;">' >> output/dashboard.html
+          echo '</body>' >> output/dashboard.html
+          echo '</html>' >> output/dashboard.html
 
       - name: Move Files to Root Directory
         run: |
