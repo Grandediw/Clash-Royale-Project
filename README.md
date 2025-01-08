@@ -9,21 +9,22 @@ Welcome to the **Clash Royale Match Prediction** project! This repository provid
 
 
 ## Table of Contents
-1. [Introduction](#introduction)  
-2. [Methods](#methods)  
+1. [Introduction](#introduction)
+2. [Architecture](#architecture)  
+3. [Methods](#methods)  
    - [Historical Dataset](#historical-dataset)  
    - [API](#api)  
-3. [Data Representation and Preprocessing](#data-representation-and-preprocessing)  
+4. [Data Representation and Preprocessing](#data-representation-and-preprocessing)  
    - [Deck Representation](#deck-representation-using-one-hot-encoding)  
    - [Outcome Encoding](#outcome-encoding-and-dataframe-creation)  
    - [Data Preprocessing](#data-preprocessing)  
-4. [Modeling and Evaluation](#modeling-and-evaluation)  
+5. [Modeling and Evaluation](#modeling-and-evaluation)  
    - [Models Tested](#models-tested)  
    - [Performance Metrics](#performance-metrics)  
-5. [Conclusion](#conclusion)  
-6. [Discussion](#discussion)  
-7. [How to Run the Code](#how-to-run-the-code)  
-8. [Try the Interface](#try-the-interface)
+6. [Conclusion](#conclusion)  
+7. [Discussion](#discussion)  
+8. [How to Run the Code](#how-to-run-the-code)  
+9. [Try the Interface](#try-the-interface)
 
 ---
 
@@ -31,6 +32,10 @@ Welcome to the **Clash Royale Match Prediction** project! This repository provid
 This project aims to create a predictive system for **Clash Royale**, a strategy-based card game with 181 unique cards. Players build eight-card decks, and the synergy, counter-abilities, and balance of the deck significantly impact match outcomes.
 
 The system predicts the probability of winning based on two opponents' decks using historical match data and machine learning models. It provides insights into how card combinations influence match results.
+
+---
+
+## Architecture
 
 ---
 
