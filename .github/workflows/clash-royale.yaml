@@ -41,7 +41,7 @@ jobs:
       - name: Convert Notebooks
         run: |
           mkdir -p output
-          jupyter-nbconvert --to html notebooks/*.ipynb --output-dir=output
+          jupyter-nbconvert --to html notebooks/4_clash_royale_batch_inference_copy.ipynb --output-dir=output
 
       - name: Replace README with Results (Optional)
         run: |
@@ -52,7 +52,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: output
-          
+
 
       - name: github pages publish
         uses: stefanzweifel/git-auto-commit-action@v5
