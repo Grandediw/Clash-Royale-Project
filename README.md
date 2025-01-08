@@ -47,7 +47,6 @@ Clash-Royale-Project/
 ├── models/              # Saved machine learning models (optional)
 ├── images/              # Project-related images and graphics
 ├── README.md            # Project documentation
-└── requirements.txt     # Python dependencies
 ```
 
 ---
@@ -56,7 +55,7 @@ Clash-Royale-Project/
 
 To run the project, ensure you have the following:
 
-- Python 3.8 or later
+- Python 3.10
 - Required Python packages (see `requirements.txt`)
 - Access to the Clash Royale API (API key required)
 
