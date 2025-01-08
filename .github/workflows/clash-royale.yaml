@@ -48,18 +48,17 @@ jobs:
 
       - name: Convert README.md to index.html
         run: |
-          pip install markdown
-          python -c "
+          python -c '
 import markdown
-with open('README.md', 'r') as f:
+with open("README.md", "r") as f:
     text = f.read()
 html = markdown.markdown(text)
-with open('output/index.html', 'w') as f:
-    f.write('<html><body>')
+with open("output/index.html", "w") as f:
+    f.write("<html><body>")
     f.write(html)
-    f.write('<hr><a href=\"dashboard.html\">Go to Dashboard</a>')
-    f.write('</body></html>')
-          "
+    f.write("<hr><a href=\'dashboard.html\'>Go to Dashboard</a>")
+    f.write("</body></html>")
+          '
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
