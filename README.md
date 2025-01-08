@@ -4,6 +4,10 @@
 
 Welcome to the **Clash Royale Match Prediction** project! This repository provides tools to fetch, clean, and analyze battle data from the Clash Royale API, with the option to develop predictive models for match outcomes. It's a perfect starting point for Clash Royale enthusiasts looking to delve into data science or machine learning.
 
+🌐 **Check out our webpage for more details and updates:**  
+[https://grandediw.github.io/Clash-Royale-Project/](https://grandediw.github.io/Clash-Royale-Project/)
+
+
 ## Table of Contents
 1. [Introduction](#introduction)  
 2. [Methods](#methods)  
@@ -146,11 +150,5 @@ Test the interactive Clash Royale prediction system directly on Hugging Face Spa
 ## References
 1. [Clash Royale Dataset on Kaggle](https://www.kaggle.com/datasets/s1m0n38/clash-royale-games)  
 2. [Clash Royale API Documentation](https://developer.clashroyale.com/#/)
-
----
-
-## **License**
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
