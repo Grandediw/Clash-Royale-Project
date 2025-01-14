@@ -3,8 +3,8 @@ name: clash-royale-daily
 on:
   workflow_dispatch:
     # Uncomment to schedule
-    #schedule:
-    #- cron: '11 6 * * *'
+    schedule:
+    - cron: '11 6 * * *'
 
 jobs:
   schedule_pipelines:
