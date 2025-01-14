@@ -2,8 +2,8 @@ name: clash-royale--update-model-weekly
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * 1'  # Runs every Monday at 06:00 UTC
+  #schedule:
+  #  - cron: '0 6 * * 1'  # Runs every Monday at 06:00 UTC
 
 jobs:
   schedule_pipelines:
@@ -36,4 +36,4 @@ jobs:
           API_TOKEN: ${{ secrets.CLASH_ROYALE_API_KEY }}
         run: |
           cd notebooks
-          jupyter nbconvert --to notebook --execute 3_clash_royale_pipelinetry.ipynb  # Added notebook execution
+          jupyter nbconvert --to notebook --execute 3_clash_royale_training_pipeline.ipynb  # Added notebook execution
